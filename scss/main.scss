@@ -1,0 +1,125 @@
+.wrapper {
+    min-height: 100vh;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 300;
+    color: #fff;
+    position: relative; 
+  }
+  
+  section {
+    height: 100vh;
+    font-size: 40px;
+    font-weight: 100;
+    background-color: #22A7F0;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    $colors: white, #F64747, #22A7F0, #F9690E, #9B59B6, #03C9A9, #ffcc00;
+    @for $i from 1 through length($colors) {
+      &:nth-child(#{$i}) {
+        background: nth($colors, $i)
+      }
+    }
+  }
+  
+  .nav {
+    &__wrapper {
+      position: fixed;
+      height: 100%;
+      padding: 30px;
+  
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: flex-end;
+    }
+  
+    & {
+      margin: 0 0 100px 30px; 
+    }
+    &__counter {
+      font-size: 24px;
+      transition: all 0.15s ease-out;
+    }
+    &__title {
+      font-size: 32px;
+      font-weight: 300;
+      margin: 0 0 0.25em;
+      width: 300px;
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: height 0.3s ease-out, opacity 0.2s ease-out;
+    }
+    &__body {
+      font-weight: 100;
+      font-size: 18px;
+      font-size: 18px;
+      width: 300px;
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: height 0.3s ease-out, opacity 0.2s ease-out;
+    }
+  
+    li {
+      position: relative;
+      transition: all 0.3s ease-out;
+      margin-bottom: 1em;
+  
+      &:after {
+        content: '';
+        display: block;
+        border-left: 2px solid white;
+        border-top: 2px solid white;
+        height: 250px;
+        width: 20px;
+        position: absolute;
+        left: -30px;
+        top: 15px;
+      }
+  
+      a {
+        display: block;
+        padding: 0;
+        color: #fff;
+        transition: all 0.15s ease-out;
+  
+        &:hover {
+          background-color: transparent;
+          padding-left: 1em
+        }
+        &:focus {
+          background-color: transparent;
+        }
+      }
+  
+      &.active {
+        pointer-events: none;
+        padding-left: 1em;
+  
+        &:after {
+          width: 35px;
+          height: 400px;
+          top: 35px;
+        }
+  
+        .nav__counter {
+          font-size: 48px;
+        }
+        .nav__title {
+          height: 40px;
+          opacity: 1;
+          overflow: visible;
+        }
+        .nav__body {
+          height: 100px;
+          opacity: 1;
+          overflow: visible;
+        }
+      }
+  
+    }
+  
+  }
